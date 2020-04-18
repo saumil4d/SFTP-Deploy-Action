@@ -1,0 +1,27 @@
+name: 'FTP Deploy'
+description: 'Syncs files via FTP/SFTP to a remote server'
+author: 'Sam Kirkland'
+inputs:
+  ftp-server:
+    description: 'Deployment destination server & path. Formatted as protocol://domain.com:port/full/destination/path/'
+    required: true
+  ftp-username:
+    description: 'FTP account username'
+    required: true
+  ftp-password:
+    description: 'FTP account password'
+    required: true
+  local-dir:
+    description: 'The local folder to copy, defaults to root project folder'
+    defaults: ./
+    required: false
+  git-ftp-args:
+    description: 'Passes through options into git-ftp'
+    defaults: 
+    required: false
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+branding:
+  icon: 'upload-cloud'
+  color: 'orange'
